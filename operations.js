@@ -1,6 +1,7 @@
-let variable1;
-let variable2;
-let operator;
+let variable1=null;
+let variable2=null;
+let operator=null;
+
 
 function add(num1, num2) {
     return num1 + num2;
@@ -12,23 +13,19 @@ function multiply(num1, num2) {
     return num1 * num2;
 }
 function divide(num1, num2) {
-    return num1 / num2;
+    return (num2!=0) ? num1/num2 : NaN;
 }
 
-
-
 function operate(variable1, variable2, operator) { 
-    switch(toString(operator)){
-        case "+": return parseFloat(add(variable1, variable2));
-        case "-": return subtract(variable1, variable2);
-        case "*": return multiply(variable1, variable2);
-        case "/": return divide(variable1, variable2);
-        default: return "hello"
+    switch(operator){
+        case "+": return add(+variable1, +variable2);
+        case "−": return subtract(+variable1, +variable2);
+        case "×": return multiply(+variable1, +variable2);
+        case "÷": return divide(+variable1, +variable2);
+        default: return "ERROR"
     }
     return;
 }
 
-let try1 = "+";
 
-
-console.log(operate((1, 3, "-")));
+// console.log(operate(3, 4, "*"))

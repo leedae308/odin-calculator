@@ -1,10 +1,50 @@
-const display = document.querySelector(".screen")
+const display = document.querySelector(".screen");
 const numbers = document.querySelectorAll(".cyan");
-const calculator = document.querySelector(".calculator");
+// const calculator = document.querySelector(".calculator");
+let cleared=true;
 
-numbers.forEach((num)=>{
-    num.addEventListener("click", function(){
-        display.textContent+=num.textContent;
+numbers.forEach((num) => {
+    num.addEventListener("click", function () {
+        if(!cleared)
+        {
+            display.textContent="";
+            cleared=true;
+        }
+        display.textContent += num.textContent;
         // calculator.appendChild(display);
+        // console.log(cleared);
     })
+})
+
+
+const operators = document.querySelectorAll(".orange.operator");
+operators.forEach((oper) => {
+    oper.addEventListener("click", function () {
+        variable1 = display.textContent;
+        operator = oper.textContent;
+        cleared=false;
+
+        // console.log(variable1);
+        // console.log(operator);
+    })
+})
+
+const clear = document.querySelector("#clear");
+clear.addEventListener("click", function () {
+    display.textContent = "";
+    variable1 = null;
+    variable2 = null;
+    operator = null;
+});
+
+const equal = document.querySelector("#equal.orange");
+equal.addEventListener("click", function () {
+    // display.textContent="";
+    variable2 = display.textContent;
+    // console.log(typeof (variable1), variable2, typeof (operator));
+    display.textContent = operate(variable1, variable2, operator);
+    variable1 = null;
+    variable2 = null;
+    operator = null;
+    cleared=false;
 })
