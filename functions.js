@@ -4,6 +4,7 @@ const smallDisplay = document.querySelector(".smallDisplay");
 
 // const calculator = document.querySelector(".calculator");
 let cleared = true;
+let smallDisplayCleared = true;
 
 numbers.forEach((num) => {
     num.addEventListener("click", function () {
@@ -11,6 +12,11 @@ numbers.forEach((num) => {
             display.textContent = "";
             cleared = true;
             // smallDisplay.textContent = "";
+            if(smallDisplayCleared==false)
+            {
+                smallDisplay.textContent="";
+                smallDisplayCleared=true;
+            }
         }
         display.textContent += num.textContent;
         // calculator.appendChild(display);
@@ -34,9 +40,7 @@ operators.forEach((oper) => {
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", function () {
     display.textContent = "";
-    variable1 = null;
-    variable2 = null;
-    operator = null;
+    init();
 });
 
 const equal = document.querySelector("#equal.orange");
@@ -46,9 +50,8 @@ equal.addEventListener("click", function () {
     // console.log(typeof (variable1), variable2, typeof (operator));
     display.textContent = operate(variable1, variable2, operator);
     smallDisplay.textContent+= " " + variable2;
-    variable1 = null;
-    variable2 = null;
-    operator = null;
+    init();
     cleared = false;
+    smallDisplayCleared = false;
 });
 
