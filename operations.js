@@ -1,6 +1,8 @@
-let variable1=null;
-let variable2=null;
-let operator=null;
+function init() {
+    variable1 = null;
+    variable2 = null;
+    operator = null;
+}
 
 
 function add(num1, num2) {
@@ -13,11 +15,11 @@ function multiply(num1, num2) {
     return num1 * num2;
 }
 function divide(num1, num2) {
-    return (num2!=0) ? num1/num2 : NaN;
+    return (num2 != 0) ? num1 / num2 : NaN;
 }
 
-function operate(variable1, variable2, operator) { 
-    switch(operator){
+function operate(variable1, variable2, operator) {
+    switch (operator) {
         case "+": return add(+variable1, +variable2);
         case "−": return subtract(+variable1, +variable2);
         case "×": return multiply(+variable1, +variable2);
@@ -26,6 +28,4 @@ function operate(variable1, variable2, operator) {
     }
     return;
 }
-
-
 // console.log(operate(3, 4, "*"))

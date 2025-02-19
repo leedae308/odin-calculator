@@ -12,10 +12,9 @@ numbers.forEach((num) => {
             display.textContent = "";
             cleared = true;
             // smallDisplay.textContent = "";
-            if(smallDisplayCleared==false)
-            {
-                smallDisplay.textContent="";
-                smallDisplayCleared=true;
+            if (smallDisplayCleared == false) {
+                smallDisplay.textContent = "";
+                smallDisplayCleared = true;
             }
         }
         display.textContent += num.textContent;
@@ -40,6 +39,7 @@ operators.forEach((oper) => {
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", function () {
     display.textContent = "";
+    smallDisplay.textContent = "";
     init();
 });
 
@@ -49,9 +49,18 @@ equal.addEventListener("click", function () {
     variable2 = display.textContent;
     // console.log(typeof (variable1), variable2, typeof (operator));
     display.textContent = operate(variable1, variable2, operator);
-    smallDisplay.textContent+= " " + variable2;
+    smallDisplay.textContent += " " + variable2;
     init();
     cleared = false;
     smallDisplayCleared = false;
 });
 
+const revert = document.querySelector("#revert.blue");
+revert.addEventListener("click", function () {
+    display.textContent *= (-1);
+})
+
+const percent = document.querySelector("#percent.blue");
+percent.addEventListener("click", function () {
+    display.textContent *= 0.01;
+})
