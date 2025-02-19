@@ -1,3 +1,8 @@
+variable1 = null;
+variable2 = null;
+operator = null;
+
+
 function init() {
     variable1 = null;
     variable2 = null;
