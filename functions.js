@@ -61,9 +61,10 @@ operators.forEach((oper) => {
                 }
 
                 if (variable2 != null) {
-                    console.log("variable null has been called");
+                    // console.log("variable null has been called");
                     display.textContent = operate(variable1, variable2, operator);
                     console.log("variable1 : " + variable1 + " operator : " + operator + " variable2 : " + variable2);
+                    variable2=null;
                 }
 
             }
