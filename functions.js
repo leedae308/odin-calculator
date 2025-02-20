@@ -18,8 +18,12 @@ numbers.forEach((num) => {
             }
         }
         display.textContent += num.textContent;
-        // calculator.appendChild(display);
-        // console.log(cleared);
+    })
+    num.addEventListener("mouseup", (event) => {
+        num.style.opacity = "1";
+    })
+    num.addEventListener("mousedown", (event) => {
+        num.style.opacity = "0.5";
     })
 })
 
@@ -27,19 +31,27 @@ numbers.forEach((num) => {
 const operators = document.querySelectorAll(".orange.operator");
 operators.forEach((oper) => {
     oper.addEventListener("click", function () {
-        if(variable1==null)
-        {
+        if (variable1 == null) {
             variable1 = display.textContent;
         }
-        else{
-            smallDisplay.textContent="";
+        else {
+            smallDisplay.textContent = "";
             smallDisplayCleared = true;
+
+            // if (operator != null) {
+            //     display.textContent = operate(variable1, display.textContent, operator);
+            // }
         }
         operator = oper.textContent;
         cleared = false;
         smallDisplay.textContent += variable1 + " " + operator;
-        // console.log(variable1);
-        // console.log(operator);
+    })
+
+    oper.addEventListener("mouseup", (event) => {
+        oper.style.opacity = "1";
+    })
+    oper.addEventListener("mousedown", (event) => {
+        oper.style.opacity = "0.5";
     })
 })
 
@@ -49,6 +61,12 @@ clear.addEventListener("click", function () {
     smallDisplay.textContent = "";
     init();
 });
+clear.addEventListener("mouseup", (event) => {
+    clear.style.opacity = "1";
+})
+clear.addEventListener("mousedown", (event) => {
+    clear.style.opacity = "0.5";
+})
 
 const equal = document.querySelector("#equal.orange");
 equal.addEventListener("click", function () {
@@ -58,19 +76,39 @@ equal.addEventListener("click", function () {
     display.textContent = operate(variable1, variable2, operator);
     smallDisplay.textContent += " " + variable2;
     init();
-    variable1=display.textContent;
+    variable1 = display.textContent;
     cleared = false;
     smallDisplayCleared = false;
 });
+equal.addEventListener("mouseup", (event) => {
+    equal.style.opacity = "1";
+})
+equal.addEventListener("mousedown", (event) => {
+    equal.style.opacity = "0.5";
+})
 
 const revert = document.querySelector("#revert.blue");
 revert.addEventListener("click", function () {
-    display.textContent *= (-1);
+    if (display.textContent != "")
+        display.textContent *= (-1);
+});
+revert.addEventListener("mouseup", (event) => {
+    revert.style.opacity = "1";
+});
+revert.addEventListener("mousedown", (event) => {
+    revert.style.opacity = "0.5";
 });
 
 const percent = document.querySelector("#percent.blue");
 percent.addEventListener("click", function () {
-    display.textContent *= 0.01;
+    if (display.textContent != "")
+        display.textContent *= 0.01;
+});
+percent.addEventListener("mouseup", (event) => {
+    percent.style.opacity = "1";
+});
+percent.addEventListener("mousedown", (event) => {
+    percent.style.opacity = "0.5";
 });
 
 

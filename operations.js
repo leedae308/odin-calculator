@@ -20,7 +20,7 @@ function multiply(num1, num2) {
     return num1 * num2;
 }
 function divide(num1, num2) {
-    return (num2 != 0) ? num1 / num2 : NaN;
+    return (num2 != 0) ? parseFloat((num1 / num2).toFixed(6)) : NaN;
 }
 
 function operate(variable1, variable2, operator) {
@@ -29,8 +29,8 @@ function operate(variable1, variable2, operator) {
         case "−": return subtract(+variable1, +variable2);
         case "×": return multiply(+variable1, +variable2);
         case "÷": return divide(+variable1, +variable2);
-        default: return "ERROR"
+        // case "=": return 0;
+        default: return "ERROR";
     }
-    return;
 }
 // console.log(operate(3, 4, "*"))
