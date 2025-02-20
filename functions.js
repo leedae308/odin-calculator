@@ -38,9 +38,12 @@ operators.forEach((oper) => {
             smallDisplay.textContent = "";
             smallDisplayCleared = true;
 
-            // if (operator != null) {
-            //     display.textContent = operate(variable1, display.textContent, operator);
-            // }
+            if (operator != null) {
+                console.log("operator null has been called");
+                variable2 = display.textContent;
+                display.textContent = operate(variable1, variable2, operator);
+                variable1=display.textContent;
+            }
         }
         operator = oper.textContent;
         cleared = false;
@@ -63,10 +66,10 @@ clear.addEventListener("click", function () {
 });
 clear.addEventListener("mouseup", (event) => {
     clear.style.opacity = "1";
-})
+});
 clear.addEventListener("mousedown", (event) => {
     clear.style.opacity = "0.5";
-})
+});
 
 const equal = document.querySelector("#equal.orange");
 equal.addEventListener("click", function () {
@@ -82,10 +85,10 @@ equal.addEventListener("click", function () {
 });
 equal.addEventListener("mouseup", (event) => {
     equal.style.opacity = "1";
-})
+});
 equal.addEventListener("mousedown", (event) => {
     equal.style.opacity = "0.5";
-})
+});
 
 const revert = document.querySelector("#revert.blue");
 revert.addEventListener("click", function () {
