@@ -39,12 +39,17 @@ operators.forEach((oper) => {
             smallDisplayCleared = true;
 
             if (operator != null) {
-                console.log("operator null has been called");
-                variable2 = display.textContent;
-                display.textContent = operate(variable1, variable2, operator);
-                variable1 = display.textContent;
+                // console.log("operator null has been called");
+                if(variable2!=null)
+                {
+                    variable2 = display.textContent;
+                    display.textContent = operate(variable1, variable2, operator);
+                    console.log("variable1 : " + variable1 + " operator : " + operator + " variable2 : " + variable2);
+                }
             }
         }
+        variable1 = display.textContent;
+
         operator = oper.textContent;
         cleared = false;
         smallDisplay.textContent += variable1 + " " + operator;
