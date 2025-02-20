@@ -14,7 +14,7 @@ function add(num1, num2) {
     return num1 + num2;
 }
 function subtract(num1, num2) {
-    return num1 - num2;
+    return parseFloat((num1 - num2).toFixed(6));
 }
 function multiply(num1, num2) {
     return parseFloat((num1 * num2).toFixed(6));

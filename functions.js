@@ -6,6 +6,7 @@ const smallDisplay = document.querySelector(".smallDisplay");
 let cleared = true;
 let smallDisplayCleared = true;
 let numPressed = false;
+let dotCount = false;
 
 numbers.forEach((num) => {
     num.addEventListener("click", function () {
@@ -18,7 +19,15 @@ numbers.forEach((num) => {
                 smallDisplayCleared = true;
             }
         }
-        display.textContent += num.textContent;
+        if (num.textContent == '.') {
+            if (!dotCount) {
+                display.textContent += num.textContent;
+                dotCount = true;
+            }
+        }
+        else {
+            display.textContent += num.textContent;
+        }
         numPressed = true;
     })
     num.addEventListener("mouseup", (event) => {
@@ -36,6 +45,7 @@ operators.forEach((oper) => {
         if (variable1 == null) {
             variable1 = display.textContent;
             numPressed = false;
+            dotCount=false;
         }
         else {
             smallDisplay.textContent = "";
@@ -44,11 +54,12 @@ operators.forEach((oper) => {
             if (operator != null) {
                 // console.log("operator null has been called");
                 // console.log("variable1 : " + variable1 + " operator : " + operator + " variable2 : " + variable2);
-                if (numPressed){
+                if (numPressed) {
                     variable2 = display.textContent;
                     numPressed = false;
+                    dotCount=false;
                 }
-                
+
                 if (variable2 != null) {
                     console.log("variable null has been called");
                     display.textContent = operate(variable1, variable2, operator);
@@ -77,6 +88,8 @@ clear.addEventListener("click", function () {
     display.textContent = "";
     smallDisplay.textContent = "";
     init();
+    dotCount = false;
+
 });
 clear.addEventListener("mouseup", (event) => {
     clear.style.opacity = "1";
@@ -101,6 +114,7 @@ equal.addEventListener("click", function () {
     variable1 = display.textContent;
     cleared = false;
     smallDisplayCleared = false;
+    dotCount=false;
 });
 equal.addEventListener("mouseup", (event) => {
     equal.style.opacity = "1";
@@ -123,8 +137,11 @@ revert.addEventListener("mousedown", (event) => {
 
 const percent = document.querySelector("#percent.blue");
 percent.addEventListener("click", function () {
-    if (display.textContent != "")
+    if (display.textContent != "") {
         display.textContent *= 0.01;
+        dotCount = true;
+    }
+
 });
 percent.addEventListener("mouseup", (event) => {
     percent.style.opacity = "1";
