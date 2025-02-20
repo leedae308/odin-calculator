@@ -17,7 +17,7 @@ function subtract(num1, num2) {
     return num1 - num2;
 }
 function multiply(num1, num2) {
-    return num1 * num2;
+    return parseFloat((num1 * num2).toFixed(6));
 }
 function divide(num1, num2) {
     return (num2 != 0) ? parseFloat((num1 / num2).toFixed(6)) : NaN;

@@ -5,6 +5,7 @@ const smallDisplay = document.querySelector(".smallDisplay");
 // const calculator = document.querySelector(".calculator");
 let cleared = true;
 let smallDisplayCleared = true;
+let numPressed = false;
 
 numbers.forEach((num) => {
     num.addEventListener("click", function () {
@@ -18,6 +19,7 @@ numbers.forEach((num) => {
             }
         }
         display.textContent += num.textContent;
+        numPressed = true;
     })
     num.addEventListener("mouseup", (event) => {
         num.style.opacity = "1";
@@ -33,6 +35,7 @@ operators.forEach((oper) => {
     oper.addEventListener("click", function () {
         if (variable1 == null) {
             variable1 = display.textContent;
+            numPressed = false;
         }
         else {
             smallDisplay.textContent = "";
@@ -40,12 +43,18 @@ operators.forEach((oper) => {
 
             if (operator != null) {
                 // console.log("operator null has been called");
-                if(variable2!=null)
-                {
+                // console.log("variable1 : " + variable1 + " operator : " + operator + " variable2 : " + variable2);
+                if (numPressed){
                     variable2 = display.textContent;
+                    numPressed = false;
+                }
+                
+                if (variable2 != null) {
+                    console.log("variable null has been called");
                     display.textContent = operate(variable1, variable2, operator);
                     console.log("variable1 : " + variable1 + " operator : " + operator + " variable2 : " + variable2);
                 }
+
             }
         }
         variable1 = display.textContent;
