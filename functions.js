@@ -42,7 +42,7 @@ operators.forEach((oper) => {
                 console.log("operator null has been called");
                 variable2 = display.textContent;
                 display.textContent = operate(variable1, variable2, operator);
-                variable1=display.textContent;
+                variable1 = display.textContent;
             }
         }
         operator = oper.textContent;
@@ -76,8 +76,13 @@ equal.addEventListener("click", function () {
     // display.textContent="";
     variable2 = display.textContent;
     // console.log(typeof (variable1), variable2, typeof (operator));
-    display.textContent = operate(variable1, variable2, operator);
-    smallDisplay.textContent += " " + variable2;
+    if (variable1 == null) {
+        display.textContent = variable2;
+    }
+    else {
+        display.textContent = operate(variable1, variable2, operator);
+        smallDisplay.textContent += " " + variable2;
+    }
     init();
     variable1 = display.textContent;
     cleared = false;
